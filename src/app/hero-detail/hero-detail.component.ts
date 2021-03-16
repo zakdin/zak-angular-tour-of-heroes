@@ -6,8 +6,9 @@ import { Hero } from "../hero";
   templateUrl: "./hero-details/hero-details.component.html",
   styleUrls: ["./hero-details/hero-details.component.css"]
 })
-export class HeroDetailsComponent implements OnInit {
+export class HeroDetailComponent implements OnInit {
   @Input() hero?: Hero;
+  constructor() {}
 
   ngOnInit(): void {
     throw new Error("Method not implemented.");
