@@ -7,9 +7,9 @@ import { Hero } from "../hero";
   styleUrls: ["./hero-details/hero-details.component.css"]
 })
 export class HeroDetailsComponent implements OnInit {
+  @Input() hero?: Hero;
+
   ngOnInit(): void {
     throw new Error("Method not implemented.");
   }
-
-  @Input() hero?: Hero;
 }
