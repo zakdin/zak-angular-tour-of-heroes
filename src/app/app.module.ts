@@ -7,7 +7,7 @@ import { HeroesComponent } from "./heroes/heroes.component";
 import { HeroDetailComponent } from "./hero-details/hero-details.component";
 
 @NgModule({
-  declarations: [AppComponent, HeroesComponent, HeroDetailComponent],
+  declarations: [AppComponent, HeroesComponent, HeroDetailsComponent],
   imports: [BrowserModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent]
