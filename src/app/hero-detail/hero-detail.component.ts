@@ -2,9 +2,9 @@ import { Component, Input, OnInit } from "@angular/core";
 import { Hero } from "../hero";
 
 @Component({
-  selector: "app-hero-details",
-  templateUrl: "./hero-details/hero-details.component.html",
-  styleUrls: ["./hero-details/hero-details.component.css"]
+  selector: "app-hero-detail",
+  templateUrl: "./hero-detail.component.html",
+  styleUrls: ["./hero-detail.component.css"]
 })
 export class HeroDetailComponent implements OnInit {
   @Input() hero?: Hero;
