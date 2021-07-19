@@ -1,10 +1,75 @@
 import { Component, VERSION } from '@angular/core';
 
+interface Stat {
+  value: string;
+  displayText: string;
+  icon: string;
+  enabled: boolean;
+}
+
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent  {
-  title = 'Tours of Heroes'
+export class AppComponent {
+  title = 'Tours of Heroes';
+
+  allowedParams = new Map<'ON' | 'OFF', Stat>([
+    [
+      'ON',
+      { value: 'ON', icon: 'done', displayText: 'Enable', enabled: false }
+    ],
+    [
+      'OFF',
+      { value: 'OFF', icon: 'close', displayText: 'Disable', enabled: false }
+    ]
+  ]);
+
+  developmentMode: any;
+  maintenanceMode: any;
+
+  copyObject(inputMap) {
+    console.log(inputMap);
+    var copiedMap = new Map<string, Stat>([]);
+    inputMap.forEach((value: Stat, key: string) => {
+      console.log(key, value);
+      copiedMap.set(key, value);
+    });
+    console.log(copiedMap);
+    return copiedMap;
+  }
+
+  getAllowedOperations(currentMode, currentState) {
+    this.developmentMode = this.copyObject(this.allowedParams);
+    this.maintenanceMode = this.copyObject(this.allowedParams);
+
+    console.log(this.maintenanceMode);
+    console.log(this.developmentMode);
+
+    console.log(this.maintenanceMode.get('ON'));
+    console.log(this.developmentMode.get('ON'));
+
+    switch (currentMode) {
+      case 'PRODUCTION':
+        console.log('PRODUCTION');
+        this.maintenanceMode.get('ON').enabled = true;
+        console.log(this.maintenanceMode.get('ON'));
+        console.log(this.maintenanceMode.get('OFF'));
+        console.log(this.developmentMode.get('ON'));
+        console.log(this.developmentMode.get('OFF'));
+        break;
+
+      case 'DEVELOPMENT':
+        console.log('DEVELOPMENT');
+        this.developmentMode.get('OFF').enabled = true;
+        break;
+
+      case 'MAINTENANCE':
+        console.log('MAINTENANCE');
+        this.maintenanceMode.get('OFF').enabled = true;
+        this.developmentMode.get('ON').enabled = true;
+        break;
+    }
+  }
 }
