@@ -34,11 +34,13 @@ export class AppComponent {
     var copiedMap = new Map<string, Stat>([]);
     inputMap.forEach((value: Stat, key: string) => {
       console.log(key, value);
-      copiedMap.set(key, value);
+      copiedMap.set(key, Object.assign({}, value));
     });
     console.log(copiedMap);
     return copiedMap;
   }
+
+  deepCopy() {}
 
   getAllowedOperations(currentMode, currentState) {
     this.developmentMode = this.copyObject(this.allowedParams);
