@@ -43,33 +43,20 @@ export class AppComponent {
   getAllowedOperations(currentMode, currentState) {
     this.developmentMode = this.copyObject(this.allowedParams);
     this.maintenanceMode = this.copyObject(this.allowedParams);
-
-    console.log(this.maintenanceMode);
-    console.log(this.developmentMode);
+    console.log('maintenacn');
+    console.log(this.maintenanceMode.get('ON'));
+    console.log(this.maintenanceMode.get('OFF'));
+    console.log('dev');
+    console.log(this.developmentMode.get('ON'));
+    console.log(this.developmentMode.get('OFF'));
+    this.maintenanceMode.get('ON').enabled = true;
+    console.log('maintenacn');
 
     console.log(this.maintenanceMode.get('ON'));
+    console.log(this.maintenanceMode.get('OFF'));
+    console.log('dev');
+
     console.log(this.developmentMode.get('ON'));
-
-    switch (currentMode) {
-      case 'PRODUCTION':
-        console.log('PRODUCTION');
-        this.maintenanceMode.get('ON').enabled = true;
-        console.log(this.maintenanceMode.get('ON'));
-        console.log(this.maintenanceMode.get('OFF'));
-        console.log(this.developmentMode.get('ON'));
-        console.log(this.developmentMode.get('OFF'));
-        break;
-
-      case 'DEVELOPMENT':
-        console.log('DEVELOPMENT');
-        this.developmentMode.get('OFF').enabled = true;
-        break;
-
-      case 'MAINTENANCE':
-        console.log('MAINTENANCE');
-        this.maintenanceMode.get('OFF').enabled = true;
-        this.developmentMode.get('ON').enabled = true;
-        break;
-    }
+    console.log(this.developmentMode.get('OFF'));
   }
 }
